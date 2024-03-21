@@ -117,13 +117,16 @@ app.get('/', async (c) => {
         const token: tokenDataType = await tokenData.json();
         console.log(`${body}`);
         console.log(`token: ${token.access_token}`);
-        //////////////////////
+        //tokenの暗号化
+
+        //* ***************************************//
+        //ユーザー名を取得する
         const discordData = await fetch('https://discordapp.com/api/users/@me', {
             method: 'GET',
             headers: { Authorization: `Bearer ${token.access_token}` },
         });
         const discord: discordDataType = await discordData.json();
-        //////////////////////
+        //* ***************************************//
         return c.html(
             <>
                 {html`<!DOCTYPE html>`}
