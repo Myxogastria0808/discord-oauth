@@ -12,9 +12,6 @@
 
 > [!CAUTION] > `.env`ファイルに書く内容は、外部に漏れてはいけない内容なので、必ず`.gitignore`ファイルに`.env`を書いてください。
 
-> [!CAUTION]
-> 現在のプログラムの中に、`console.log()`するべきでない内容を表示しています。実際にこのプログラムを使用する際は、`console.log()`を全て消してください。
-
 ```.env
 TOKEN = ""
 APPLICATIONID = ""
@@ -27,6 +24,9 @@ AUTHURL = ""
 
 -   言語: TypeScript
 -   主に、Hono を使用
+
+> [!CAUTION]
+> 現在のプログラムの中に、`console.log()`するべきでない内容を表示しています。実際にこのプログラムを使用する際は、`console.log()`を全て消してください。
 
 ### bot に置く`.env`ファイルの中身
 
