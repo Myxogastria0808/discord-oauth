@@ -36,7 +36,7 @@ CLIENTSECRET = ""
 
 ```
 
-## 参考
+## 参考にさせていただいたサイト
 
 https://qiita.com/masayoshi4649/items/46fdb744cb8255f5eb98
 
