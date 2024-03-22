@@ -5,6 +5,7 @@
 #参考サイト: https://tech.kurojica.com/archives/20987/
 #参考サイト: https://qiita.com/richmikan@github/items/eefbaed716e5ed198973
 #参考サイト: http://tech.clickyourstyle.com/articles/23
+#参考サイト: https://qiita.com/take4s5i/items/e207cee4fb04385a9952
 
 CURRENT=$(
     cd $(dirname $0)
