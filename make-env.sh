@@ -12,8 +12,8 @@ CURRENT=$(
     pwd
 )
 
-BOTPATH="${CURRENT}/bot/.envA"
-BACKENDPATH="${CURRENT}/backend/.envA"
+BOTPATH="${CURRENT}/bot/.env"
+BACKENDPATH="${CURRENT}/backend/.env"
 
 echo $BOTPATH
 echo $BACKENDPATH
