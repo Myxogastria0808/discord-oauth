@@ -8,7 +8,7 @@
 ## backend
 
 -   言語: TypeScript
--   WebAPI: Hono
+-   Web API: Hono
 -   ORM: Prisma
 -   RDBMS: MySQL
 
