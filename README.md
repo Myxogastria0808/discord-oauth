@@ -15,6 +15,23 @@
 > [!CAUTION]
 > プログラムの中に、`console.log()`するべきでない内容を`console.log()`しています。実際にこのプログラムを使用する際は、`console.log()`を全て消してください。
 
+### `.env`ファイルの生成
+
+#### batch
+
+```batch
+make-env.cmd
+```
+
+#### shell
+
+> [!CAUTION]
+> Linux 環境で実行した際の動作の確認をしていないため正しく動作しない可能性があります。
+
+```shell
+bash make-env.sh
+```
+
 ### bot に置く`.env`ファイルの中身
 
 > [!NOTE]
@@ -27,7 +44,8 @@
 TOKEN = ""
 APPLICATIONID = ""
 GUILDID = ""
-AUTHURL = ""
+REGISTERURL = ""
+DELETEURL = ""
 
 ```
 
@@ -43,11 +61,13 @@ AUTHURL = ""
 > 　`.env`ファイルに書く内容は、外部に漏れてはいけない内容を含むので、必ず`.gitignore`ファイルに`.env`を書いてください。
 
 ```.env
-TOKEN = ""
-APPLICATIONID = ""
-GUILDID = ""
-REGISTERURL = ""
-DELETEURL = ""
+IPADDRESS = "127.0.0.1"
+PORT = "3000"
+CLIENTID = ""
+CLIENTSECRET = ""
+
+#以下はPrismaによって自動生成されるの省略
+# This was inserted by ~
 
 
 ```

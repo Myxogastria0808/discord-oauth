@@ -1,0 +1,29 @@
+@echo off
+
+rem 参考サイト: https://qiita.com/shin1rok/items/efb5052ef5fb8138c26d
+rem 参考サイト: https://qiita.com/plcherrim/items/8edf3d3d33a0ae86cb5c
+rem 参考サイト: https://rainbow-engine.com/batch-folderfile-existcheck/
+rem 参考サイト: https://setips.net/bat/bat-exist/
+rem 参考サイト: https://note.alhinc.jp/n/n828e5d7a417f
+rem 参考サイト: https://qiita.com/tera1707/items/e8c5cacac28b2cd7598f
+
+if not exist %~dp0bot\.envA (
+    type nul > ./bot/.envA
+    echo TOKEN = "">> ./bot/.envA
+    echo APPLICATIONID = "">> ./bot/.envA
+    echo GUILDID = "">> ./bot/.envA
+    echo REGISTERURL = "">> ./bot/.envA
+    echo DELETEURL = "">> ./bot/.envA
+) else (
+    echo bot\.envA is already exits.
+)
+
+if not exist %~dp0backend\.envA (
+    type nul > ./backend/.envA
+    echo IPADDRESS = "127.0.0.1">> ./backend/.envA
+    echo PORT = "3000">> ./backend/.envA
+    echo CLIENTID = "">> ./backend/.envA
+    echo CLIENTSECRET = "">> ./backend/.envA
+) else (
+    echo backend\.envA is already exits.
+)
