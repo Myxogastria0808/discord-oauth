@@ -15,7 +15,7 @@
 
 ### bot に置く`.env`ファイルの中身
 
-> [!WARNING]
+> [!NOTE]
 > 空の文字列(または数字)に適切な情報を入力してください。
 
 > [!CAUTION]
@@ -31,10 +31,10 @@ AUTHURL = ""
 
 ### backend に置く`.env`ファイルの中身
 
-> [!WARNING]
+> [!NOTE]
 > 空の文字列(または数字)に適切な情報を入力してください。
 
-> [!INFO]
+> [!NOTE]
 > IPADDRESS と PORT は、適宜変えてください。
 
 > [!CAUTION]
