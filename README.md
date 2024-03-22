@@ -5,6 +5,14 @@
 -   言語: TypeScript
 -   主に、 discord.js v14 を使用
 
+## backend (Web API)
+
+-   言語: TypeScript
+-   主に、Hono を使用
+
+> [!CAUTION]
+> 現在のプログラムの中に、`console.log()`するべきでない内容を`console.log()`しています。実際にこのプログラムを使用する際は、`console.log()`を全て消してください。
+
 ### bot に置く`.env`ファイルの中身
 
 > [!WARNING]
@@ -21,25 +29,23 @@ AUTHURL = ""
 
 ```
 
-## backend (Web API)
-
--   言語: TypeScript
--   主に、Hono を使用
-
-> [!CAUTION]
-> 現在のプログラムの中に、`console.log()`するべきでない内容を`console.log()`しています。実際にこのプログラムを使用する際は、`console.log()`を全て消してください。
-
-### bot に置く`.env`ファイルの中身
+### backend に置く`.env`ファイルの中身
 
 > [!WARNING]
 > 空の文字列(または数字)に適切な情報を入力してください。
 
+> [!INFO]
+> IPADDRESS と PORT は、適宜変えてください。
+
 > [!CAUTION]
-> 　`.env`ファイルに書く内容は、外部に漏れてはいけない内容なので、必ず`.gitignore`ファイルに`.env`を書いてください。
+> 　`.env`ファイルに書く内容は、外部に漏れてはいけない内容を含むので、必ず`.gitignore`ファイルに`.env`を書いてください。
 
 ```.env
+IPADDRESS = "127.0.0.1"
+PORT = "3000"
 CLIENTID = ""
 CLIENTSECRET = ""
+
 
 ```
 

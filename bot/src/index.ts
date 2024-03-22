@@ -1,6 +1,6 @@
 import { CacheType, Interaction, GatewayIntentBits, Client, Events } from 'discord.js';
 import dotenv from 'dotenv';
-import { ping } from './commands/utilities/ping';
+import { register } from './commands/utilities/slashcommands';
 
 dotenv.config();
 
@@ -17,9 +17,9 @@ client.once('ready', () => {
 
 client.on(Events.InteractionCreate, async (interaction: Interaction<CacheType>) => {
     if (interaction.isChatInputCommand()) {
-        if (interaction.commandName === ping.data.name) {
+        if (interaction.commandName === register.data.name) {
             try {
-                await ping.execute(interaction);
+                await register.execute(interaction);
             } catch (error) {
                 console.error(error);
                 if (interaction.replied || interaction.deferred) {
