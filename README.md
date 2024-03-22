@@ -5,6 +5,16 @@
 -   言語: TypeScript
 -   主に、 discord.js v14 を使用
 
+### 用意している Slash Command
+
+### `/register-user`
+
+-   ユーザー登録を行うスラッシュコマンド
+
+### `/register-delete`
+
+-   ユーザー削除を行うスラッシュコマンド
+
 ## backend
 
 -   言語: TypeScript
