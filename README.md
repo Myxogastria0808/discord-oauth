@@ -7,11 +7,11 @@
 
 ### 用意している Slash Command
 
-### `/register-user`
+#### `/register-user`
 
 -   ユーザー登録を行うスラッシュコマンド
 
-### `/register-delete`
+#### `/register-delete`
 
 -   ユーザー削除を行うスラッシュコマンド
 
