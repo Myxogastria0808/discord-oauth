@@ -1,9 +1,9 @@
 import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
+import { html } from 'hono/html';
+import { css, Style } from 'hono/css';
 import { checkIsString } from './types';
 import dotenv from 'dotenv';
-import { html } from 'hono/html';
-import { css, keyframes, Style } from 'hono/css';
 
 dotenv.config();
 
@@ -66,7 +66,11 @@ const nameClass = css`
 `;
 
 app.get('/', async (c) => {
+    //* ***************************************//
+    //codeを取得する
     const code: string | undefined = c.req.query('code');
+    //* ***************************************//
+
     const meta: Meta = {
         lang: 'ja',
         title: 'DebtBot Authentication',
@@ -107,6 +111,8 @@ app.get('/', async (c) => {
             </>
         );
     } else {
+        //* ***************************************//
+        //トークンを取得する
         console.log(`code: ${code}`);
         const body = `client_id=${clientId}&client_secret=${clientSecret}&grant_type=authorization_code&code=${code}&redirect_uri=${redirectUrl}`;
         const tokenData = await fetch('https://discordapp.com/api/oauth2/token', {
@@ -114,18 +120,18 @@ app.get('/', async (c) => {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body,
         });
-        const token: tokenDataType = await tokenData.json();
+        const IncludesToken: tokenDataType = await tokenData.json();
+        const token: string = IncludesToken.access_token;
         console.log(`${body}`);
-        console.log(`token: ${token.access_token}`);
-        //tokenの暗号化
-
+        console.log(`token: ${token}`);
         //* ***************************************//
         //ユーザー名を取得する
         const discordData = await fetch('https://discordapp.com/api/users/@me', {
             method: 'GET',
-            headers: { Authorization: `Bearer ${token.access_token}` },
+            headers: { Authorization: `Bearer ${token}` },
         });
         const discord: discordDataType = await discordData.json();
+        console.log(`discord username: ${discord.username}`);
         //* ***************************************//
         return c.html(
             <>
