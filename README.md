@@ -5,10 +5,12 @@
 -   言語: TypeScript
 -   主に、 discord.js v14 を使用
 
-## backend (Web API)
+## backend
 
 -   言語: TypeScript
--   主に、Hono を使用
+-   WebAPI: Hono
+-   ORM: Prisma
+-   RDBMS: MySQL
 
 > [!CAUTION]
 > プログラムの中に、`console.log()`するべきでない内容を`console.log()`しています。実際にこのプログラムを使用する際は、`console.log()`を全て消してください。
@@ -41,10 +43,11 @@ AUTHURL = ""
 > 　`.env`ファイルに書く内容は、外部に漏れてはいけない内容を含むので、必ず`.gitignore`ファイルに`.env`を書いてください。
 
 ```.env
-IPADDRESS = "127.0.0.1"
-PORT = "3000"
-CLIENTID = ""
-CLIENTSECRET = ""
+TOKEN = ""
+APPLICATIONID = ""
+GUILDID = ""
+REGISTERURL = ""
+DELETEURL = ""
 
 
 ```
@@ -56,3 +59,5 @@ https://qiita.com/masayoshi4649/items/46fdb744cb8255f5eb98
 https://discordjs.guide/oauth2/#a-quick-example
 
 https://qiita.com/sukeo-sukeo/items/6e86906d88e1110bbb36
+
+https://hono.dev/top

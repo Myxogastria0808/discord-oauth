@@ -1,3 +1,12 @@
 {
-    "cSpell.words": ["AUTHURL", "CLIENTID", "CLIENTSECRET", "GUILDID", "nyokinyokinyki", "slashcommands"]
+    "cSpell.words": [
+        "AUTHURL",
+        "CLIENTID",
+        "CLIENTSECRET",
+        "DELETEURL",
+        "GUILDID",
+        "nyokinyokinyki",
+        "REGISTERURL",
+        "slashcommands"
+    ]
 }
