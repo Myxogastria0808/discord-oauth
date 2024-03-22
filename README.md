@@ -17,13 +17,13 @@
 
 ### `.env`ファイルの生成
 
-#### batch
+### batch
 
 ```batch
 make-env.cmd
 ```
 
-#### shell
+### shell
 
 > [!CAUTION]
 > Linux 環境で実行した際の動作の確認をしていないため正しく動作しない可能性があります。
