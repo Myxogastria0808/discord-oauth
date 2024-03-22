@@ -1,16 +1,10 @@
 import { PrismaClient } from '@prisma/client';
+import { UserDataType } from 'types';
 
 const prisma = new PrismaClient();
 
-type UserData = {
-    id: number;
-    discordId: string;
-    createdAt: Date;
-    updatedAt: Date;
-};
-
 const registerUser = async (discordId: string): Promise<void> => {
-    const user: UserData = await prisma.user.create({
+    const user: UserDataType = await prisma.user.create({
         data: {
             discordId,
         },
@@ -18,7 +12,7 @@ const registerUser = async (discordId: string): Promise<void> => {
 };
 
 const createUserValidator = async (discordId: string): Promise<boolean> => {
-    const user: UserData | null = await prisma.user.findFirst({
+    const user: UserDataType | null = await prisma.user.findFirst({
         where: {
             discordId,
         },
@@ -31,7 +25,7 @@ const createUserValidator = async (discordId: string): Promise<boolean> => {
 };
 
 const deleteUser = async (discordId: string): Promise<void> => {
-    const user: UserData = await prisma.user.delete({
+    const user: UserDataType = await prisma.user.delete({
         where: {
             discordId,
         },

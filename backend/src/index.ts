@@ -2,7 +2,7 @@ import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
 import { checkIsString, checkIsStringAndParseInt } from './types/env';
 import dotenv from 'dotenv';
-import { user } from './routes/index';
+import { approval, user } from './routes/index';
 
 dotenv.config();
 
@@ -12,6 +12,7 @@ const ipaddress: string = checkIsString(process.env.IPADDRESS);
 const app = new Hono();
 
 app.route('/user', user);
+app.route('/approval', approval);
 
 app.get('/', (c) => {
     return c.text('Hello, World!');
