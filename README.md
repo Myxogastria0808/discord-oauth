@@ -17,13 +17,13 @@
 
 ### `.env`ファイルの生成
 
-### batch
+### Batchfile
 
 ```batch
 make-env.cmd
 ```
 
-### shell
+### Shell
 
 > [!CAUTION]
 > Linux 環境で実行した際の動作の確認をしていないため正しく動作しない可能性があります。
@@ -81,3 +81,27 @@ https://discordjs.guide/oauth2/#a-quick-example
 https://qiita.com/sukeo-sukeo/items/6e86906d88e1110bbb36
 
 https://hono.dev/top
+
+https://www.server-memo.net/shellscript/file_check.html
+
+http://www.ajisaba.net/sh/get_dir.html
+
+https://tech.kurojica.com/archives/20987/
+
+https://qiita.com/richmikan@github/items/eefbaed716e5ed198973
+
+http://tech.clickyourstyle.com/articles/23
+
+https://qiita.com/take4s5i/items/e207cee4fb04385a9952
+
+https://qiita.com/shin1rok/items/efb5052ef5fb8138c26d
+
+https://qiita.com/plcherrim/items/8edf3d3d33a0ae86cb5c
+
+https://rainbow-engine.com/batch-folderfile-existcheck/
+
+https://setips.net/bat/bat-exist/
+
+https://note.alhinc.jp/n/n828e5d7a417f
+
+https://qiita.com/tera1707/items/e8c5cacac28b2cd7598f
