@@ -4,18 +4,30 @@ import { checkIsString } from '../../types';
 
 dotenv.config();
 
-const authUrl = checkIsString(process.env.AUTHURL);
+const registerUrl = checkIsString(process.env.REGISTERURL);
+const deleteUrl = checkIsString(process.env.DELETEURL);
 const guildId = checkIsString(process.env.GUILDID);
 
-const register = {
-    data: new SlashCommandBuilder().setName('register').setDescription('Sample slash command.'),
+const registerUser = {
+    data: new SlashCommandBuilder().setName('register-user').setDescription('Sample slash command.'),
     async execute(interaction: CommandInteraction) {
         if (guildId === interaction.guild?.id) {
-            await interaction.reply(`[OAuth URL](${authUrl})`);
+            await interaction.reply(`[OAuth URL](${registerUrl})`);
         } else {
             await interaction.reply('You are not guild member');
         }
     },
 };
 
-export { register };
+const deleteUser = {
+    data: new SlashCommandBuilder().setName('delete-user').setDescription('Sample slash command.'),
+    async execute(interaction: CommandInteraction) {
+        if (guildId === interaction.guild?.id) {
+            await interaction.reply(`[OAuth URL](${deleteUrl})`);
+        } else {
+            await interaction.reply('You are not guild member');
+        }
+    },
+};
+
+export { registerUser, deleteUser };

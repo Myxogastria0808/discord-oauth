@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const dotenv_1 = __importDefault(require("dotenv"));
-const ping_1 = require("./commands/utilities/ping");
+const slashcommands_1 = require("./commands/utilities/slashcommands");
 dotenv_1.default.config();
 const client = new discord_js_1.Client({
     intents: [discord_js_1.GatewayIntentBits.Guilds],
@@ -18,9 +18,29 @@ client.once('ready', () => {
 });
 client.on(discord_js_1.Events.InteractionCreate, async (interaction) => {
     if (interaction.isChatInputCommand()) {
-        if (interaction.commandName === ping_1.ping.data.name) {
+        if (interaction.commandName === slashcommands_1.registerUser.data.name) {
             try {
-                await ping_1.ping.execute(interaction);
+                await slashcommands_1.registerUser.execute(interaction);
+            }
+            catch (error) {
+                console.error(error);
+                if (interaction.replied || interaction.deferred) {
+                    await interaction.followUp({
+                        content: 'There was an error while executing this command!',
+                        ephemeral: true,
+                    });
+                }
+                else {
+                    await interaction.reply({
+                        content: 'There was an error while executing this command!',
+                        ephemeral: true,
+                    });
+                }
+            }
+        }
+        else if (interaction.commandName === slashcommands_1.deleteUser.data.name) {
+            try {
+                await slashcommands_1.deleteUser.execute(interaction);
             }
             catch (error) {
                 console.error(error);

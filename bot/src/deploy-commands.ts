@@ -1,11 +1,14 @@
 import { REST, Routes, RESTPostAPIChatInputApplicationCommandsJSONBody } from 'discord.js';
 import dotenv from 'dotenv';
 import { checkIsString } from './types/index';
-import { register } from './commands/utilities/slashcommands';
+import { registerUser, deleteUser } from './commands/utilities/slashcommands';
 
 dotenv.config();
 
-const commands: RESTPostAPIChatInputApplicationCommandsJSONBody[] = [register.data.toJSON()];
+const commands: RESTPostAPIChatInputApplicationCommandsJSONBody[] = [
+    registerUser.data.toJSON(),
+    deleteUser.data.toJSON(),
+];
 
 const token: string = checkIsString(process.env.TOKEN);
 const applicationId: string = checkIsString(process.env.APPLICATIONID);
