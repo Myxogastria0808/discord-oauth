@@ -15,6 +15,10 @@
 
 -   ユーザー削除を行うスラッシュコマンド
 
+#### `/approval`
+
+-   ユーザー登録をしたユーザーのみが、`You are authorized!`という返信を見ることができるコマンド
+
 ## backend
 
 -   言語: TypeScript
@@ -24,6 +28,28 @@
 
 > [!CAUTION]
 > プログラムの中に、`console.log()`するべきでない内容を`console.log()`しています。実際にこのプログラムを使用する際は、`console.log()`を全て消してください。
+
+### 使用を推奨しているパッケージマネージャー
+
+-   yarn
+
+## Setup
+
+### windows ユーザー
+
+> [!CAUTION]
+> 以下のコマンドたちを実際に実行して試していないので、ご注意ください。
+
+```batch
+make-env.cmd
+cd bot
+yarn
+cd ..
+cd backend
+yarn
+#データベースに関する情報を適宜書き換える
+prisma migrate
+```
 
 ### `.env`ファイルの生成
 
