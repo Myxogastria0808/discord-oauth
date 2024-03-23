@@ -7,7 +7,7 @@ version: 2
 updates:
     - package-ecosystem: 'npm' # See documentation for possible values
       directory:
-          - '/backend'
-          - '/bot' # Location of package manifests
+          - 'backend'
+          - 'bot' # Location of package manifests
       schedule:
           interval: 'weekly'
