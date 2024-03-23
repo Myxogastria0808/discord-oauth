@@ -26,4 +26,4 @@ const meta: Meta = {
     ogUrl: '',
 };
 
-export { meta };
+export { meta, Meta };

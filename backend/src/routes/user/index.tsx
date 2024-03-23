@@ -1,12 +1,11 @@
 import { Hono } from 'hono';
-import { html } from 'hono/html';
-import { Style } from 'hono/css';
 import { checkIsString, checkIsStringAndParseInt } from '../../types/env';
 import dotenv from 'dotenv';
-import { titleClass, nameClass } from '../../types/css';
+import { titleClass, nameClass } from '../../components/css';
 import { meta } from '../../types/meta';
 import { tokenDataType, discordDataType } from '../../types/discord';
 import { registerUser, createUserValidator, deleteUser } from '../../db/orm';
+import { Base } from '../../components';
 
 dotenv.config();
 
@@ -29,26 +28,9 @@ router.get('/register', async (c) => {
         //codeが取得できなかった場合
         return c.html(
             <>
-                {html`<!DOCTYPE html>`}
-                <html lang={meta.lang}>
-                    <head>
-                        <meta charset="UTF-8" />
-                        <title>{meta.title}</title>
-                        <meta name="description" content={meta.metaDescription} />
-                        <meta name="keyword" content={meta.metaKeyword} />
-                        <meta property="og:title" content={meta.ogTitle} />
-                        <meta property="og:description" content={meta.ogDescription} />
-                        <meta property="og:image:width" content={String(meta.ogWidth ?? '')} />
-                        <meta property="og:image:height" content={String(meta.ogHeight ?? '')} />
-                        <meta property="og:image" content={meta.ogImage} />
-                        <meta property="og:type" content={meta.ogType} />
-                        <meta property="og:url" content={meta.ogUrl} />
-                        <Style />
-                    </head>
-                    <body>
-                        <h1 class={titleClass}>OAuth authentication failed.</h1>
-                    </body>
-                </html>
+                <Base meta={meta}>
+                    <h1 className={titleClass}>OAuth authentication failed.</h1>
+                </Base>
             </>
         );
     } else {
@@ -85,78 +67,27 @@ router.get('/register', async (c) => {
             } else {
                 return c.html(
                     <>
-                        {html`<!DOCTYPE html>`}
-                        <html lang={meta.lang}>
-                            <head>
-                                <meta charset="UTF-8" />
-                                <title>{meta.title}</title>
-                                <meta name="description" content={meta.metaDescription} />
-                                <meta name="keyword" content={meta.metaKeyword} />
-                                <meta property="og:title" content={meta.ogTitle} />
-                                <meta property="og:description" content={meta.ogDescription} />
-                                <meta property="og:image:width" content={String(meta.ogWidth ?? '')} />
-                                <meta property="og:image:height" content={String(meta.ogHeight ?? '')} />
-                                <meta property="og:image" content={meta.ogImage} />
-                                <meta property="og:type" content={meta.ogType} />
-                                <meta property="og:url" content={meta.ogUrl} />
-                                <Style />
-                            </head>
-                            <body>
-                                <h1 class={titleClass}>{discord.username} is already exists.</h1>
-                            </body>
-                        </html>
+                        <Base meta={meta}>
+                            <h1 className={titleClass}>{discord.username} is already exists.</h1>
+                        </Base>
                     </>
                 );
             }
             //* ***************************************//
             return c.html(
                 <>
-                    {html`<!DOCTYPE html>`}
-                    <html lang={meta.lang}>
-                        <head>
-                            <meta charset="UTF-8" />
-                            <title>{meta.title}</title>
-                            <meta name="description" content={meta.metaDescription} />
-                            <meta name="keyword" content={meta.metaKeyword} />
-                            <meta property="og:title" content={meta.ogTitle} />
-                            <meta property="og:description" content={meta.ogDescription} />
-                            <meta property="og:image:width" content={String(meta.ogWidth ?? '')} />
-                            <meta property="og:image:height" content={String(meta.ogHeight ?? '')} />
-                            <meta property="og:image" content={meta.ogImage} />
-                            <meta property="og:type" content={meta.ogType} />
-                            <meta property="og:url" content={meta.ogUrl} />
-                            <Style />
-                        </head>
-                        <body>
-                            <h1 class={titleClass}>OAuth authentication succeeded.</h1>
-                            <h2 class={nameClass}>{discord.username}</h2>
-                        </body>
-                    </html>
+                    <Base meta={meta}>
+                        <h1 class={titleClass}>OAuth authentication succeeded.</h1>
+                        <h2 class={nameClass}>{discord.username}</h2>
+                    </Base>
                 </>
             );
         } catch (_e) {
             return c.html(
                 <>
-                    {html`<!DOCTYPE html>`}
-                    <html lang={meta.lang}>
-                        <head>
-                            <meta charset="UTF-8" />
-                            <title>{meta.title}</title>
-                            <meta name="description" content={meta.metaDescription} />
-                            <meta name="keyword" content={meta.metaKeyword} />
-                            <meta property="og:title" content={meta.ogTitle} />
-                            <meta property="og:description" content={meta.ogDescription} />
-                            <meta property="og:image:width" content={String(meta.ogWidth ?? '')} />
-                            <meta property="og:image:height" content={String(meta.ogHeight ?? '')} />
-                            <meta property="og:image" content={meta.ogImage} />
-                            <meta property="og:type" content={meta.ogType} />
-                            <meta property="og:url" content={meta.ogUrl} />
-                            <Style />
-                        </head>
-                        <body>
-                            <h1 class={titleClass}>OAuth authentication failed.</h1>
-                        </body>
-                    </html>
+                    <Base meta={meta}>
+                        <h1 class={titleClass}>OAuth authentication failed.</h1>
+                    </Base>
                 </>
             );
         }
@@ -172,26 +103,9 @@ router.get('/delete', async (c) => {
         //codeが取得できなかった場合
         return c.html(
             <>
-                {html`<!DOCTYPE html>`}
-                <html lang={meta.lang}>
-                    <head>
-                        <meta charset="UTF-8" />
-                        <title>{meta.title}</title>
-                        <meta name="description" content={meta.metaDescription} />
-                        <meta name="keyword" content={meta.metaKeyword} />
-                        <meta property="og:title" content={meta.ogTitle} />
-                        <meta property="og:description" content={meta.ogDescription} />
-                        <meta property="og:image:width" content={String(meta.ogWidth ?? '')} />
-                        <meta property="og:image:height" content={String(meta.ogHeight ?? '')} />
-                        <meta property="og:image" content={meta.ogImage} />
-                        <meta property="og:type" content={meta.ogType} />
-                        <meta property="og:url" content={meta.ogUrl} />
-                        <Style />
-                    </head>
-                    <body>
-                        <h1 class={titleClass}>OAuth authentication failed.</h1>
-                    </body>
-                </html>
+                <Base meta={meta}>
+                    <h1 class={titleClass}>OAuth authentication failed.</h1>
+                </Base>
             </>
         );
     } else {
@@ -228,51 +142,17 @@ router.get('/delete', async (c) => {
 
                 return c.html(
                     <>
-                        {html`<!DOCTYPE html>`}
-                        <html lang={meta.lang}>
-                            <head>
-                                <meta charset="UTF-8" />
-                                <title>{meta.title}</title>
-                                <meta name="description" content={meta.metaDescription} />
-                                <meta name="keyword" content={meta.metaKeyword} />
-                                <meta property="og:title" content={meta.ogTitle} />
-                                <meta property="og:description" content={meta.ogDescription} />
-                                <meta property="og:image:width" content={String(meta.ogWidth ?? '')} />
-                                <meta property="og:image:height" content={String(meta.ogHeight ?? '')} />
-                                <meta property="og:image" content={meta.ogImage} />
-                                <meta property="og:type" content={meta.ogType} />
-                                <meta property="og:url" content={meta.ogUrl} />
-                                <Style />
-                            </head>
-                            <body>
-                                <h1 class={titleClass}>{discord.username} successfully deleted.</h1>
-                            </body>
-                        </html>
+                        <Base meta={meta}>
+                            <h1 class={titleClass}>{discord.username} successfully deleted.</h1>
+                        </Base>
                     </>
                 );
             } else {
                 return c.html(
                     <>
-                        {html`<!DOCTYPE html>`}
-                        <html lang={meta.lang}>
-                            <head>
-                                <meta charset="UTF-8" />
-                                <title>{meta.title}</title>
-                                <meta name="description" content={meta.metaDescription} />
-                                <meta name="keyword" content={meta.metaKeyword} />
-                                <meta property="og:title" content={meta.ogTitle} />
-                                <meta property="og:description" content={meta.ogDescription} />
-                                <meta property="og:image:width" content={String(meta.ogWidth ?? '')} />
-                                <meta property="og:image:height" content={String(meta.ogHeight ?? '')} />
-                                <meta property="og:image" content={meta.ogImage} />
-                                <meta property="og:type" content={meta.ogType} />
-                                <meta property="og:url" content={meta.ogUrl} />
-                                <Style />
-                            </head>
-                            <body>
-                                <h1 class={titleClass}>{discord.username} is not registered.</h1>
-                            </body>
-                        </html>
+                        <Base meta={meta}>
+                            <h1 class={titleClass}>{discord.username} is not registered.</h1>
+                        </Base>
                     </>
                 );
             }
@@ -280,26 +160,9 @@ router.get('/delete', async (c) => {
         } catch (_e) {
             return c.html(
                 <>
-                    {html`<!DOCTYPE html>`}
-                    <html lang={meta.lang}>
-                        <head>
-                            <meta charset="UTF-8" />
-                            <title>{meta.title}</title>
-                            <meta name="description" content={meta.metaDescription} />
-                            <meta name="keyword" content={meta.metaKeyword} />
-                            <meta property="og:title" content={meta.ogTitle} />
-                            <meta property="og:description" content={meta.ogDescription} />
-                            <meta property="og:image:width" content={String(meta.ogWidth ?? '')} />
-                            <meta property="og:image:height" content={String(meta.ogHeight ?? '')} />
-                            <meta property="og:image" content={meta.ogImage} />
-                            <meta property="og:type" content={meta.ogType} />
-                            <meta property="og:url" content={meta.ogUrl} />
-                            <Style />
-                        </head>
-                        <body>
-                            <h1 class={titleClass}>OAuth authentication failed.</h1>
-                        </body>
-                    </html>
+                    <Base meta={meta}>
+                        <h1 class={titleClass}>OAuth authentication failed.</h1>
+                    </Base>
                 </>
             );
         }
