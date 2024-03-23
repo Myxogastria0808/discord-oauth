@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import { titleClass, nameClass } from '../../components/css';
 import { meta } from '../../types/meta';
 import { tokenDataType, discordDataType } from '../../types/discord';
-import { registerUser, createUserValidator, deleteUser } from '../../db/orm';
+import { registerUser, userExistValidator, deleteUser } from '../../db/orm';
 import { Base } from '../../components';
 
 dotenv.config();
@@ -60,8 +60,8 @@ router.get('/register', async (c) => {
             //* ***************************************//
             //ユーザーが存在するかどうかチェック
             console.log(`discord UserID: ${discord.id}`);
-            const validator: boolean = await createUserValidator(discord.id);
-            if (validator) {
+            const validator: boolean = await userExistValidator(discord.id);
+            if (!validator) {
                 //ユーザーの登録
                 await registerUser(discord.id);
             } else {
@@ -135,8 +135,8 @@ router.get('/delete', async (c) => {
             //* ***************************************//
             //ユーザーが存在するかどうかチェック
             console.log(`discord UserID: ${discord.id}`);
-            const validator: boolean = await createUserValidator(discord.id);
-            if (!validator) {
+            const validator: boolean = await userExistValidator(discord.id);
+            if (validator) {
                 //ユーザーの削除
                 await deleteUser(discord.id);
 

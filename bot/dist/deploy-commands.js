@@ -11,6 +11,7 @@ dotenv_1.default.config();
 const commands = [
     slashcommands_1.registerUser.data.toJSON(),
     slashcommands_1.deleteUser.data.toJSON(),
+    slashcommands_1.approvalCommand.data.toJSON(),
 ];
 const token = (0, index_1.checkIsString)(process.env.TOKEN);
 const applicationId = (0, index_1.checkIsString)(process.env.APPLICATIONID);

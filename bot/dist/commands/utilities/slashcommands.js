@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteUser = exports.registerUser = void 0;
+exports.approvalCommand = exports.deleteUser = exports.registerUser = void 0;
 const discord_js_1 = require("discord.js");
 const dotenv_1 = __importDefault(require("dotenv"));
 const types_1 = require("../../types");
@@ -35,3 +35,28 @@ const deleteUser = {
     },
 };
 exports.deleteUser = deleteUser;
+const approvalCommand = {
+    data: new discord_js_1.SlashCommandBuilder().setName('approval').setDescription('Sample slash command.'),
+    async execute(interaction) {
+        await interaction.deferReply();
+        if (guildId === interaction.guild?.id) {
+            try {
+                const resData = await fetch('http://127.0.0.1:3000/approval', {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `${interaction.user.id}`,
+                    },
+                });
+                const data = await resData.json();
+                await interaction.editReply(data.authorization);
+            }
+            catch (_e) {
+                await interaction.editReply('fetch error');
+            }
+        }
+        else {
+            await interaction.editReply('You are not guild member');
+        }
+    },
+};
+exports.approvalCommand = approvalCommand;

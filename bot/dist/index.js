@@ -58,6 +58,26 @@ client.on(discord_js_1.Events.InteractionCreate, async (interaction) => {
                 }
             }
         }
+        else if (interaction.commandName === slashcommands_1.approvalCommand.data.name) {
+            try {
+                await slashcommands_1.approvalCommand.execute(interaction);
+            }
+            catch (error) {
+                console.error(error);
+                if (interaction.replied || interaction.deferred) {
+                    await interaction.followUp({
+                        content: 'There was an error while executing this command!',
+                        ephemeral: true,
+                    });
+                }
+                else {
+                    await interaction.reply({
+                        content: 'There was an error while executing this command!',
+                        ephemeral: true,
+                    });
+                }
+            }
+        }
         else {
             return;
         }

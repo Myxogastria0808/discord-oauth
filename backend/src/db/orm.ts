@@ -11,13 +11,13 @@ const registerUser = async (discordId: string): Promise<void> => {
     });
 };
 
-const createUserValidator = async (discordId: string): Promise<boolean> => {
+const userExistValidator = async (discordId: string): Promise<boolean> => {
     const user: UserDataType | null = await prisma.user.findFirst({
         where: {
             discordId,
         },
     });
-    if (user === null) {
+    if (user !== null) {
         return true;
     } else {
         return false;
@@ -32,4 +32,4 @@ const deleteUser = async (discordId: string): Promise<void> => {
     });
 };
 
-export { registerUser, createUserValidator, deleteUser };
+export { registerUser, userExistValidator, deleteUser };

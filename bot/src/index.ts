@@ -1,6 +1,6 @@
 import { CacheType, Interaction, GatewayIntentBits, Client, Events } from 'discord.js';
 import dotenv from 'dotenv';
-import { registerUser, deleteUser } from './commands/utilities/slashcommands';
+import { registerUser, deleteUser, approvalCommand } from './commands/utilities/slashcommands';
 
 dotenv.config();
 
@@ -37,6 +37,23 @@ client.on(Events.InteractionCreate, async (interaction: Interaction<CacheType>) 
         } else if (interaction.commandName === deleteUser.data.name) {
             try {
                 await deleteUser.execute(interaction);
+            } catch (error) {
+                console.error(error);
+                if (interaction.replied || interaction.deferred) {
+                    await interaction.followUp({
+                        content: 'There was an error while executing this command!',
+                        ephemeral: true,
+                    });
+                } else {
+                    await interaction.reply({
+                        content: 'There was an error while executing this command!',
+                        ephemeral: true,
+                    });
+                }
+            }
+        } else if (interaction.commandName === approvalCommand.data.name) {
+            try {
+                await approvalCommand.execute(interaction);
             } catch (error) {
                 console.error(error);
                 if (interaction.replied || interaction.deferred) {
